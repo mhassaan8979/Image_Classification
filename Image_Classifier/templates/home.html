@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mx-auto">
+            <div class="row">
+                <div class="col-12 bg-light mx-auto">
+
+                    <form action="{% url 'results' %}" method="post" class="text-center" id="dropzone" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="image_data" accept="image/*">
+                        <button type="submit" class="btn btn-success">Classify</button>
+                        <!--<div class="dz-message needsclick">
+                            <img src="{% static 'images/upload.webp' %}" width="100vw" height="100vw"><br>
+                            <span class="note needsclick"  name="image_data">Drop files here or click to upload</span>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-8 mx-auto">
+                                <button id="submitBtn" type="submit" class="btn btn-success">Upload & Classify</button>
+                            </div>
+                        </div>-->
+                    </form>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

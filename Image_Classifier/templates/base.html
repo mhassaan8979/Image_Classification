@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+    <title>Image Classifier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/dropzone.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand" href="{% url 'home' %}">Image Classifier</a>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col card-wrapper" data-player="Atif_Aslam">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="{% static 'images/Atif_Aslam.jpeg' %}" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Atif Aslam</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>            
+                <div class="col card-wrapper" data-player="Babar_Azam">
+                        <div class="card border-0">
+                            <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                                <img class="w-100 h-100" src="{% static 'images/Baber_Azam.jpeg' %}" alt="Card image cap">
+                            </div>
+                            <div class="card-body text-center mt-4">
+                                <h4 class="text-uppercase card-title">Babar Azam</h4>
+                                </p>
+                            </div>
+                        </div>
+                </div>            
+                <div class="col card-wrapper" data-player="Emma_Watson">
+                        <div class="card border-0">
+                            <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                                <img class="w-100 h-100" src="{% static 'images/Emma_Watson.jpg' %}" alt="Card image cap">
+                            </div>
+                            <div class="card-body text-center mt-4">
+                                <h4 class="text-uppercase card-title">Emma Watson</h4>
+                                </p>
+                            </div>
+                        </div>
+                </div>          
+
+                <div class="col card-wrapper" data-player="James_Macvoy">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="{% static 'images/James_MAcvoy.jpg' %}" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">James Macvoy</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>      
+
+                <div class="col card-wrapper" data-player="Momina_Mustehsan">
+                    <div class="card border-0">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="{% static 'images/Momina_Mustehsan.jpeg' %}" alt="Card image cap">
+                        </div>
+                        <div class="card-body text-center mt-4">
+                            <h4 class="text-uppercase card-title">Momina Mustehsan</h4>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock content %}
+</body>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="{% static 'js//dropzone.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+</html>
