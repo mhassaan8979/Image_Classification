@@ -1,9 +1,75 @@
-Dropzone.autoDiscover = false;
+// Function to handle image selection and encoding
+
+/*function handleImage() {
+    const imageInput = document.getElementById('imageInput');
+    const encodeButton = document.getElementById('encodeButton');
+    const encodedImage = document.getElementById('encodedImage');
+
+    imageInput.addEventListener('change', function () {
+        const selectedImage = imageInput.files[0];
+
+        if (selectedImage) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const base64String = event.target.result.split(',')[1];
+                encodedImage.innerHTML = `<p>Base64-Encoded Image:</p><img src="data:image/jpeg;base64,${base64String}" />`;
+
+                // You can send the base64String to the server via a POST request here
+                sendImageToServer(base64String);
+            };
+            reader.readAsDataURL(selectedImage);
+        }
+    });
+
+    encodeButton.addEventListener('click', function () {
+        imageInput.click();
+    });
+}
+
+// Call the function when the document is ready
+document.addEventListener('DOMContentLoaded', handleImage);
+
+// Function to send the base64 image data to the server
+function sendImageToServer(base64Data) {
+    $.ajax({
+        url: "/home/",  // Update the URL to match your Django view URL
+        type: 'POST',
+        data: { image_data: base64Data },  // Sending image data as form data
+        success: function (data, status) {
+            if (data && data.length > 0) {
+                // Assuming you are using AJAX to load 'result.html'
+                $("#content").load("result.html", { result: data });
+            } else {
+                // Handle error
+            }
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+/*Dropzone.autoDiscover = false;
+
+$(document).ready(function() {
+    console.log( "ready!" );
+    $("#error").hide();
+    $("#resultHolder").hide();
+    $("#divClassTable").hide();
+
+    init();
+});
 
 function init() {
     let dz = new Dropzone("#dropzone", {
-        url: "/",
+        url: " ",
         maxFiles: 1,
+        paramName: "image_data",
         addRemoveLinks: true,
         dictDefaultMessage: "Some Message",
         autoProcessQueue: false
@@ -16,41 +82,17 @@ function init() {
     });
 
     dz.on("complete", function (file) {
-        let imageData = file.dataURL;
+        let image_data = file.dataURL;
         
-        var url = "http://127.0.0.1:5000/classify_image";
+        var url = "http://127.0.0.1:8000/";
 
-        $.post(url, {
-            image_data: file.dataURL
-        },function(data, status) {
-            /* 
-            Below is a sample response if you have two faces in an image lets say Atif and Baber together.
-            Most of the time if there is one person in the image you will get only one element in below array
-            data = [
-                {
-                    class: "Momina_Mustehsan",
-                    class_probability: [1.05, 12.67, 22.00, 4.5, 91.56],
-                    class_dictionary: {
-                        Atif_Aslam: 0,
-                        Babar_Azam: 1,
-                        Emma_Watson: 2,
-                        James_Macvoy: 3,
-                        Momina_Mustehsan: 4
-                    }
-                },
-                {
-                    class: "Emma_Watson",
-                    class_probability: [7.02, 23.7, 52.00, 6.1, 1.62],
-                    class_dictionary: {
-                        Atif_Aslam: 0,
-                        Babar_Azam: 1,
-                        Emma_Watson: 2,
-                        James_Macvoy: 3,
-                        Momina_Mustehsan: 4
-                    }
-                }
-            ]
-            */
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify({ image_data: image_data }),  // Send data as JSON
+            contentType: 'application/json',  // Set content type to JSON
+            success: function (data, status) {
+            
             console.log(data);
             if (!data || data.length==0) {
                 $("#resultHolder").hide();
@@ -73,7 +115,7 @@ function init() {
                 $("#error").hide();
                 $("#resultHolder").show();
                 $("#divClassTable").show();
-                $("#resultHolder").html($(`[data-player="${match.class}"`).html());
+                $("#resultHolder").html($(`[data-player="${match.class}"]`).html());
                 let classDictionary = match.class_dictionary;
                 for(let personName in classDictionary) {
                     let index = classDictionary[personName];
@@ -83,19 +125,11 @@ function init() {
                 }
             }
             // dz.removeFile(file);            
-        });
+        }});
     });
 
     $("#submitBtn").on('click', function (e) {
         dz.processQueue();		
     });
 }
-
-$(document).ready(function() {
-    console.log( "ready!" );
-    $("#error").hide();
-    $("#resultHolder").hide();
-    $("#divClassTable").hide();
-
-    init();
-});
+*/
